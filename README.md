@@ -155,7 +155,7 @@
 <details markdown="1">
 <summary>서비스 아키텍처</summary>
 
-![서비스 아키텍처](https://user-images.githubusercontent.com/89131236/161880526-be85ddc7-d65c-4b66-bdac-b33d1e154ce3.png)
+![서비스 아키텍처 (1)](https://user-images.githubusercontent.com/89131236/162146016-6a65a78e-00f8-477d-8308-3e1ab4ed75e6.png)
 </details>
 
 <details markdown="2">
