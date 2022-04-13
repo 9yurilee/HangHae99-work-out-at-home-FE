@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import lock from "./Images/Lock.svg";
-import LoginWithKakao from "../Common/Functions/KakaoLogin";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+
+import LoginWithKakao from '../Common/Functions/KakaoLogin';
+
+import lock from './Images/Lock.svg';
 
 const MyPart = () => {
-  const is_local = localStorage.getItem("isLogin") ? true : false;
+  const is_local = localStorage.getItem('isLogin') ? true : false;
 
   return (
     <>
       {is_local ? (
-        ""
+        ''
       ) : (
         <DIV>
           <Container>
@@ -34,12 +36,6 @@ const DIV = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-
-  /* @media screen and (min-width: 767px) and (max-width: 1023px) {
-    width: 100vh;
-    margin-left: 1rem;
-    display: none;
-  } */
 `;
 
 const Container = styled.div`
@@ -49,6 +45,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const Text = styled.div`
   margin: 14px 0;
   color: #fff;

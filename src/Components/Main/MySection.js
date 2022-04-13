@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import clap from './Images/MySection_Clap.svg';
 
 import Banner from './Banner';
 import Calender from './Calender';
@@ -12,8 +11,11 @@ import MostExercised from './MostExercised';
 import Ranking from './Ranking';
 import { actionCreators as myinfoActions } from '../../redux/modules/myinfo';
 
+import clap from './Images/MySection_Clap.svg';
+
 const MySection = () => {
   const dispatch = useDispatch();
+
   const myRecords = useSelector((state) => state.myinfo.myRecords);
 
   const is_local = localStorage.getItem('isLogin');
@@ -46,11 +48,11 @@ const MySection = () => {
         <MyPage>
           <Ranking />
           <MyRecord myRecords={myRecords}></MyRecord>
-          <Calender></Calender>
+          <Calender />
         </MyPage>
         <RightSection>
           <MostExercised myRecords={myRecords} />
-          <Banner></Banner>
+          <Banner />
         </RightSection>
       </MySectionContent>
     </MySectionContainer>
@@ -63,18 +65,12 @@ const MySectionContainer = styled.div`
   width: 1320px;
   align-items: center;
   margin: 56px auto 64px;
+  position: relative;
   color: rgb(34 37 41);
   @media screen and (max-width: 1360px) {
     width: 62rem;
     justify-content: center;
   }
-  @media screen and (max-width: 1023px) {
-    /* width: 65rem */
-    /* width: 100vh; */
-    /* padding: 0px 1rem; */
-    /* display: none; */
-  }
-  position: relative;
 `;
 
 const MySectionTitle = styled.div`
@@ -88,19 +84,12 @@ const MySectionTitle = styled.div`
   justify-content: start;
   align-items: center;
   margin-bottom: 30px;
-
-  /* @media screen and (max-width: 1023px) {
-    padding: 0 1rem;
-  } */
 `;
 
 const MySectionContent = styled.div`
   width: 100%;
   display: flex;
   justify-content: end;
-  /* @media screen and (max-width: 1023px) {
-    padding: 0 1rem;
-  } */
 `;
 
 const MyPage = styled.div`
@@ -116,10 +105,8 @@ const MyPage = styled.div`
     width: 100%;
     justify-content: space-evenly;
   }
-  /* @media screen and (max-width: 1023px) {
-    justify-content: space-between;
-  } */
 `;
+
 const RightSection = styled.div`
   display: flex;
   flex-direction: column;

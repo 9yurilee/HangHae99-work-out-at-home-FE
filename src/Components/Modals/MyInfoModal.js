@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import KakaoLogin from '../Common/Functions/KakaoLogin';
 import jwt_decode from 'jwt-decode';
+
+import KakaoLogin from '../Common/Functions/KakaoLogin';
+import { logoutWithKakao } from '../Common/Functions/KakaoLogin';
+import { actionCreators as userActions } from '../../redux/modules/user';
 
 import lock from './Images/Lock.svg';
 import Close from './Images/Close.svg';
 import Dropdown from '../Common/Dropdown';
-
-import { logoutWithKakao } from '../Common/Functions/KakaoLogin';
-import { actionCreators as userActions } from '../../redux/modules/user';
 
 const MyInfoModal = (props) => {
   const { openMyInfoModal } = props;
 
   const dispatch = useDispatch();
 
-  // const token = localStorage.getItem('isLogin');
   const is_local = localStorage.getItem('isLogin') ? true : false;
   const myToken = is_local ? jwt_decode(localStorage.getItem('isLogin')) : null;
   const nickName = is_local ? myToken.nickName : '';
   const Goal = is_local ? myToken.weeklyGoal : null;
-
-  //닉네임 변경
 
   const [nickname, setNickname] = useState(nickName);
   const [selectGoal, setSelectGoal] = useState(Goal);
@@ -230,7 +227,6 @@ const Btns = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-top: 40px;
-  /* align-items: center; */
 `;
 
 const ChangeBtn = styled.div`
@@ -262,7 +258,6 @@ const LogOutBtn = styled.div`
   font-size: 20px;
   line-height: 34px;
   letter-spacing: -0.8pt;
-  /* position: absolute; */
   cursor: pointer;
 `;
 

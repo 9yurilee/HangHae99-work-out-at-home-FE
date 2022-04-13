@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import { history } from '../../redux/configureStore';
+
 import MoreInfoModal from '../Modals/MoreInfoModal';
 import MyInfoModal from '../Modals/MyInfoModal';
 import ManualModal from '../Modals/ManualModal';
+
 import Logo from './Images/Header_Logo.svg';
 import hamburgerIcon from './Images/Header_Hamburger.svg';
 import HeaderIcon_manualBtn from './Images/Header_ManualBtn.svg';
 import HeaderIcon_person from './Images/Header_Person.svg';
-import { history } from '../../redux/configureStore';
 
 const Header = (props) => {
   const isLocal = localStorage.getItem('isLogin') ? true : false;
@@ -22,7 +25,6 @@ const Header = (props) => {
     if (!showModal) {
       setMyModal(false);
       setGuideModal(false);
-      // setBubble(false);
     }
   };
 
@@ -163,6 +165,7 @@ const Contents = styled.div`
   line-height: 24px;
   letter-spacing: -0.64pt;
 `;
+
 const Check = styled.div`
   font-weight: bold;
   margin-top: 8px;
@@ -170,4 +173,5 @@ const Check = styled.div`
   line-height: 20px;
   letter-spacing: -0.26pt;
 `;
+
 export default Header;

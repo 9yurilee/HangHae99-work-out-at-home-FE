@@ -1,37 +1,35 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { history } from "../redux/configureStore";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { history } from '../redux/configureStore';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import DetailHeader from "../Components/Detail/DetailHeader";
+import DetailHeader from '../Components/Detail/DetailHeader';
 
-import Player from "../Components/Detail/Player";
-import Progress from "../Components/Detail/Progress";
-import TabletPortrait from "../Components/Common/TabletPortrait";
+import Player from '../Components/Detail/Player';
+import Progress from '../Components/Detail/Progress';
+import TabletPortrait from '../Components/Common/TabletPortrait';
 
-import Mute from "./Images/Detail_Mute.svg";
-import Speaker from "./Images/Detail_Speaker.svg";
-import Microphone from "./Images/Detail_Microphone.svg";
-import Notmute from "./Images/Detail_NotMute.svg";
-import Video from "./Images/Detail_Video.svg";
-import NoVideo from "./Images/Detail_NoVideo.svg";
-import Happy from "./Images/Detail_Happy.svg";
+import Mute from './Images/Detail_Mute.svg';
+import Speaker from './Images/Detail_Speaker.svg';
+import Microphone from './Images/Detail_Microphone.svg';
+import Notmute from './Images/Detail_NotMute.svg';
+import Video from './Images/Detail_Video.svg';
+import NoVideo from './Images/Detail_NoVideo.svg';
+import Happy from './Images/Detail_Happy.svg';
 
-import { actionCreators as roomActions } from "../redux/modules/room";
-import Videoplayer from "../Components/Detail/VideoPlayer";
-import jwt_decode from "jwt-decode";
-import CompleteModal from "../Components/Modals/CompleteModal";
-import RoomClickModalForLogin from "../Components/Modals/RoomClickModalForLogin";
+import { actionCreators as roomActions } from '../redux/modules/room';
+import Videoplayer from '../Components/Detail/VideoPlayer';
+import jwt_decode from 'jwt-decode';
+import CompleteModal from '../Components/Modals/CompleteModal';
+import RoomClickModalForLogin from '../Components/Modals/RoomClickModalForLogin';
 const Detail = (props) => {
   // console.log("디테일");
   const roomId = props.match.params.roomId;
   const roomList = useSelector((state) => state.room.list);
   const roomInfo = roomList.filter((e, i) => e.roomId === roomId)[0];
-  const isLocal = localStorage.getItem("isLogin") ? true : false;
-  const nickname = isLocal
-    ? jwt_decode(localStorage.getItem("isLogin")).nickName
-    : null;
+  const isLocal = localStorage.getItem('isLogin') ? true : false;
+  const nickname = isLocal ? jwt_decode(localStorage.getItem('isLogin')).nickName : null;
   const [isStart, setIsStart] = React.useState();
   const [isDone, setIsDone] = React.useState(false);
   const [isDoneModal, setIsDoneModal] = React.useState(true);
@@ -41,10 +39,10 @@ const Detail = (props) => {
   const [videoOn, setVideoOn] = useState(false);
   const [vol, setVol] = React.useState(10);
   const [isMuted, setIsMuted] = React.useState(true);
-  const [numberOfUsers, setNumberOfUsers] = React.useState("1/5");
+  const [numberOfUsers, setNumberOfUsers] = React.useState('1/5');
 
   // 모바일 접속시
-  const NewMedia = window.matchMedia("screen and (max-width:767px)");
+  const NewMedia = window.matchMedia('screen and (max-width:767px)');
 
   const childRef = React.useRef();
   const changeNumberOfUsers = (text) => {
@@ -89,17 +87,17 @@ const Detail = (props) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     if (NewMedia.matches) {
-      history.replace("/");
+      history.replace('/');
       return;
     }
 
     if (!roomInfo) {
       if (!isLocal) {
-        var result = window.confirm("로그인이 필요합니다.");
+        var result = window.confirm('로그인이 필요합니다.');
         if (result) {
           popLoginModal();
         } else {
-          history.replace("/");
+          history.replace('/');
         }
       }
       dispatch(roomActions.getRoomDB());
@@ -113,44 +111,18 @@ const Detail = (props) => {
         <Background>
           {roomInfo && (
             <>
-              {isDone && isDoneModal && (
-                <CompleteModal
-                  isDone={isDone}
-                  setIsDoneModal={setIsDoneModal}
-                ></CompleteModal>
-              )}
-              <DetailHeader
-                roomInfo={roomInfo}
-                numberOfUsers={numberOfUsers}
-                isDone={isDone}
-              />
+              {isDone && isDoneModal && <CompleteModal isDone={isDone} setIsDoneModal={setIsDoneModal}></CompleteModal>}
+              <DetailHeader roomInfo={roomInfo} numberOfUsers={numberOfUsers} isDone={isDone} />
               <DIV>
                 <div>
                   <TimerWrap>
-                    <Progress
-                      roomInfo={roomInfo}
-                      isStart={isStart}
-                      isDone={isDone}
-                    ></Progress>
+                    <Progress roomInfo={roomInfo} isStart={isStart} isDone={isDone} />
                   </TimerWrap>
                   <VideoWrap>
                     <MainVideo>
-                      <Player
-                        roomInfo={roomInfo}
-                        setIsStart={setIsStart}
-                        vol={vol}
-                        isMuted={isMuted}
-                        setIsDone={setIsDone}
-                        isDone={isDone}
-                        offWebcamSound={offWebcamSound}
-                      ></Player>
+                      <Player roomInfo={roomInfo} setIsStart={setIsStart} vol={vol} isMuted={isMuted} setIsDone={setIsDone} isDone={isDone} offWebcamSound={offWebcamSound} />
                     </MainVideo>
-                    <Videoplayer
-                      nickname={nickname}
-                      roomId={roomId}
-                      changeNumberOfUsers={changeNumberOfUsers}
-                      ref={childRef}
-                    ></Videoplayer>
+                    <Videoplayer nickname={nickname} roomId={roomId} changeNumberOfUsers={changeNumberOfUsers} ref={childRef} />
                   </VideoWrap>
 
                   <SoundBtn>
@@ -159,15 +131,11 @@ const Detail = (props) => {
                         <>
                           <Btn
                             style={{
-                              width: "236px",
-                              justifyContent: "flex-start",
+                              width: '236px',
+                              justifyContent: 'flex-start',
                             }}
                           >
-                            <img
-                              src={Speaker}
-                              alt="음량조절"
-                              onClick={setClicked}
-                            />
+                            <img src={Speaker} alt="음량조절" onClick={setClicked} />
                             <VolInput
                               type="range"
                               min="0"
@@ -176,7 +144,7 @@ const Detail = (props) => {
                               onChange={(e) => {
                                 setVol(e.target.value);
                               }}
-                              style={{ margin: "8px" }}
+                              style={{ margin: '8px' }}
                             />
                             <div>{vol}</div>
                           </Btn>
@@ -221,15 +189,8 @@ const Detail = (props) => {
                           </>
                         )}
                       </Btn>
-                      <Btn
-                        onClick={fighting}
-                        style={{ justifyContent: "center" }}
-                      >
-                        <img
-                          src={Happy}
-                          alt="격려하기"
-                          style={{ marginRight: "4px" }}
-                        />
+                      <Btn onClick={fighting} style={{ justifyContent: 'center' }}>
+                        <img src={Happy} alt="격려하기" style={{ marginRight: '4px' }} />
                         격려하기
                       </Btn>
                     </BtnWrap>
@@ -270,7 +231,7 @@ const BubbleWrap = styled.div`
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 0px solid;
-    content: "";
+    content: '';
     position: absolute;
     bottom: -9px;
     left: 20px;

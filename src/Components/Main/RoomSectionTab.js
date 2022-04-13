@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
-import fire from './Images/Fire.svg';
-import Reload from './Images/RoomSectionTab_Reload.svg';
-
 import Dropdown from '../Common/Dropdown';
 import MakeRoomModal from '../Modals/MakeRoomModal';
 import { actionCreators as roomActions } from '../../redux/modules/room';
+
+import fire from './Images/Fire.svg';
+import Reload from './Images/RoomSectionTab_Reload.svg';
 
 const RoomSectionTop = (props) => {
   const dispatch = useDispatch();
@@ -56,9 +56,6 @@ const RoomSectionTop = (props) => {
           {is_local ? `${nickName}님을 기다리고 있는 방이에요, 참가해보세요!` : '참가를 기다리고 있는 방이에요, 로그인 후 함께해요!'}
 
           <img src={Reload} alt="리로드 아이콘" style={{ marginLeft: '12px', cursor: 'pointer' }} className="reload" onClick={clickReload} />
-          {/* <MakeRoomBtn className="isEntering" onClick={enteringHandler}>
-            입장 가능!!!!
-          </MakeRoomBtn> */}
         </RoomSectionTitle>
         <RoomSectionContent>
           <RoomSectionCategory>
@@ -93,7 +90,6 @@ const RoomSectionTop = (props) => {
                 return;
               }
               setIsMakeModal(true);
-              // document.body.style.overflow = 'hidden';
             }}
           >
             방 만들기
@@ -111,6 +107,7 @@ const RoomSectionTopContainer = styled.div`
     width: 100%;
   }
 `;
+
 const RoomSectionTitle = styled.div`
   color: #222529;
   color: #222529;
@@ -143,6 +140,7 @@ const DifficultyBox = styled.div`
   display: flex;
   align-items: center;
 `;
+
 const DB_EL = styled.div`
   margin: 7px 8px;
   padding: 7px 16px;
@@ -154,6 +152,7 @@ const DB_EL = styled.div`
     background-color: #d9dffe;
   }
 `;
+
 const CategoryBox = styled.div`
   display: flex;
   align-items: center;
@@ -181,4 +180,5 @@ const MakeRoomBtn = styled.div`
     width: 221px;
   }
 `;
+
 export default RoomSectionTop;

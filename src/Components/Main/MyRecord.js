@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Progress } from "antd";
-import "antd/dist/antd.less";
+import { Progress } from 'antd';
+import 'antd/dist/antd.less';
 
-import fire from "./Images/Fire.svg";
-import clock from "./Images/Clock.svg";
+import fire from './Images/Fire.svg';
+import clock from './Images/Clock.svg';
 
 const MyRecord = (props) => {
   const {
@@ -24,15 +24,8 @@ const MyRecord = (props) => {
     <DIV>
       <Header>이만큼 운동했어요</Header>
       <MyRecordContent>
-        <div style={{ position: "relative" }}>
-          <Progress
-            type="circle"
-            percent={per}
-            showInfo={false}
-            width={144}
-            trailColor="#EAECEF"
-            strokeColor="#405EFB"
-          />
+        <div style={{ position: 'relative' }}>
+          <Progress type="circle" percent={per} showInfo={false} width={144} trailColor="#EAECEF" strokeColor="#405EFB" />
           <div className="progressInTextBox">
             <div className="countPerWeekText">{countPerWeek}일</div>
             <div className="weeklyGoalText">이번주 목표 {weeklyGoal}일</div>
@@ -41,26 +34,16 @@ const MyRecord = (props) => {
 
         <BottomTextContainer>
           <div className="bottomTextBox">
-            <img
-              src={fire}
-              alt="불꽃 아이콘"
-              style={{ width: "14px", margin: "0px 2px 1px 0px" }}
-            />
+            <img src={fire} alt="불꽃 아이콘" style={{ width: '14px', margin: '0px 2px 1px 0px' }} />
             <div>
-              연속&nbsp; <span className="bold">{daysInARow}</span>일째
-              운동중이에요
+              연속&nbsp; <span className="bold">{daysInARow}</span>일째 운동중이에요
             </div>
           </div>
 
-          <div style={{ marginTop: "4px" }} className="bottomTextBox">
-            <img
-              src={clock}
-              alt="시계 아이콘"
-              style={{ width: "14px", margin: "0px 2px 2px 0px" }}
-            />
+          <div style={{ marginTop: '4px' }} className="bottomTextBox">
+            <img src={clock} alt="시계 아이콘" style={{ width: '14px', margin: '0px 2px 2px 0px' }} />
             <div>
-              이번 주에&nbsp;<span className="bold">{totalTimePerWeek}</span>분
-              운동했어요
+              이번 주에&nbsp;<span className="bold">{totalTimePerWeek}</span>분 운동했어요
             </div>
           </div>
         </BottomTextContainer>
@@ -73,9 +56,6 @@ const DIV = styled.div`
   width: 315px;
   height: 284px;
   border-radius: 12px;
-  /* @media screen and (max-width: 1023px) {
-    width: 30vh;
-  } */
 `;
 
 const Header = styled.div`

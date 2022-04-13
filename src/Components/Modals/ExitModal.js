@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
+import { history } from '../../redux/configureStore';
+
 import styled from 'styled-components';
 import Close from './Images/Close.png';
-import { history } from '../../redux/configureStore';
+
 const ExitModal = (props) => {
   const { isDone, exitRoom } = props;
 
@@ -96,23 +98,6 @@ const BtnWrap = styled.div`
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-`;
-
-const ModalContainer = styled.div`
-  position: fixed;
-  left: 50%;
-  right: 50%;
-  top: 55%;
-  bottom: 50%;
-  transform: translate(-50%, -50%);
-  /* max-height: 80%; */
-  width: 960px;
-  height: 480px;
-  text-align: center;
-  z-index: 999;
-  /* @media ${(props) => props.theme.device.MobileLandscape} {
-    width: 90%; */
-  /* } */
 `;
 
 export default ExitModal;

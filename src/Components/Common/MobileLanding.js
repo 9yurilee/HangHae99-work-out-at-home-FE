@@ -1,31 +1,26 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-import mobile1 from "./Images/MobileLanding_1.svg";
-import mobile2 from "./Images/MobileLanding_2.svg";
-import mobile3 from "./Images/MobileLanding_3.svg";
-import mobile4 from "./Images/MobileLanding_4.svg";
+import mobile1 from './Images/MobileLanding_1.svg';
+import mobile2 from './Images/MobileLanding_2.svg';
+import mobile3 from './Images/MobileLanding_3.svg';
+import mobile4 from './Images/MobileLanding_4.svg';
 
 const MobileLanding = () => {
   const { Kakao } = window;
 
-  // 카카오 직접 만든 템플릿으로 링크 공유하기
   const shareLink = () => {
     Kakao.Link.sendCustom({
       templateId: 73709,
     });
   };
 
-  // 배너 캐러셀
   const [bannerIndex, setBannerIndex] = React.useState(0);
-
-  // map 돌리기 위한 배너 갯수만큼의 배열
   const circleArray = [0, 0, 0, 0];
 
-  // 이전 버튼 클릭시 배너의 인덱스를 -1, 인덱스가 처음이면 마지막으로 돌아가기.
   const clickPrev = () => {
     if (bannerIndex <= 0) {
       setBannerIndex(circleArray.length - 1);
@@ -33,7 +28,6 @@ const MobileLanding = () => {
     }
     setBannerIndex(bannerIndex - 1);
   };
-  // 다음 버튼 클릭시 배너의 인덱스를 +1, 인덱스가 마지막이면 처음인 0으로 돌아가기.
   const clickNext = () => {
     if (bannerIndex >= circleArray.length - 1) {
       setBannerIndex(0);
@@ -42,20 +36,12 @@ const MobileLanding = () => {
     setBannerIndex(bannerIndex + 1);
   };
 
-  // 아래 원형 클릭시에도 인덱스를 바꿔줌
   const clickCircle = (i) => {
     setBannerIndex(i);
   };
 
-  // useEffect와 setInterval을 활용해 일정시간마다 자동으로 슬라이더가 넘어가기 구현
   React.useEffect(() => {
-    const slider = setInterval(
-      () =>
-        setBannerIndex((value) =>
-          value === circleArray.length - 1 ? 0 : value + 1
-        ),
-      5500
-    );
+    const slider = setInterval(() => setBannerIndex((value) => (value === circleArray.length - 1 ? 0 : value + 1)), 5500);
     return () => clearInterval(slider);
   }, []);
 
@@ -63,18 +49,9 @@ const MobileLanding = () => {
     <DIV>
       <Contents>
         <Container>
-          {/* <GrFormPrevious
-            onClick={clickPrev}
-            style={{
-              position: 'absolute',
-              left: '0px',
-              zIndex: 1,
-              cursor: 'pointer',
-            }}
-          /> */}
           <Carousel bannerIndex={bannerIndex}>
             {circleArray.map((e, i) => (
-              <ContentBox style={{ display: "flex" }} index={i} key={i}>
+              <ContentBox style={{ display: 'flex' }} index={i} key={i}>
                 <div className="banner">
                   {bannerIndex === 0 ? (
                     <img src={mobile1} alt="모바일 배너 1" />
@@ -97,13 +74,12 @@ const MobileLanding = () => {
                   clickCircle(i);
                 }}
                 style={{
-                  backgroundColor: i === bannerIndex ? "#AEB5BC" : "",
-                  transition: "width 0.9s",
+                  backgroundColor: i === bannerIndex ? '#AEB5BC' : '',
+                  transition: 'width 0.9s',
                 }}
-              ></Circle>
+              />
             ))}
           </CircleBox>
-          {/* <GrFormNext onClick={clickNext} style={{ position: 'absolute', right: '0px', cursor: 'pointer' }} /> */}
         </Container>
         <LinkBtn
           onClick={() => {
@@ -153,7 +129,7 @@ const Carousel = styled.div`
   transition: 0.2s;
   transform: translate(
     ${(props) => {
-      return -(props.bannerIndex * 292) + "px";
+      return -(props.bannerIndex * 292) + 'px';
     }}
   );
 `;

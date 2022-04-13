@@ -5,10 +5,9 @@ import fighting from './Images/MostExercised_Fighting.svg';
 
 const MostExercised = (props) => {
   const { myRecords } = props;
-  const isRecords = myRecords.mostExercised ? true : false;
 
+  const isRecords = myRecords.mostExercised ? true : false;
   const records = myRecords.mostExercised;
-  // const recordsLength = records.length;
 
   return (
     <>
@@ -81,6 +80,7 @@ const MostExercisedContainer = styled.div`
   flex-direction: column;
   letter-spacing: -0.48px;
 `;
+
 const MostExercisedHeader = styled.div`
   font-size: 16px;
   font-weight: bold;
@@ -106,7 +106,6 @@ const MostExercisedContent = styled.div`
   background-color: #f1f3f5;
   display: flex;
   line-height: 20px;
-
   .MostExercisedContentTextBox {
     display: flex;
     flex-direction: column;

@@ -5,19 +5,12 @@ import jwt_decode from 'jwt-decode';
 const { Kakao } = window;
 
 export const LoginWithKakao = () => {
-  //scope : 수집할 사용자 정보를 명시.
   const scope = 'profile_nickname';
-  // Kakao.Auth.login는 인증에 성공하면 success call back이 실행된다.
   Kakao.Auth.loginForm({
     scope,
     persistAccessToken: true,
-    // success는 인증 정보를 응답(response)으로 받는다.
     success: function (response) {
-      //카카오 SDK에 사용자 토큰을 설정한다.
       Kakao.Auth.setAccessToken(response.access_token);
-      // const ACCESS_TOKEN = Kakao.Auth.getAccessToken();
-      // console.log(ACCESS_TOKEN); //토큰 발급 완료
-      // 사용자 정보 불러오기
       Kakao.API.request({
         url: '/v2/user/me',
         success: (response) => {

@@ -16,7 +16,6 @@ const ManualModal = (props) => {
 
   const [page, setPage] = React.useState(0);
 
-  // 아래 원형 클릭시에도 인덱스를 바꿔줌
   const clickCircle = (i) => {
     setPage(i);
   };
@@ -123,8 +122,6 @@ const ManualModal = (props) => {
   );
 };
 
-const DIV = styled.div``;
-
 const BackGround = styled.div`
   width: 100%;
   height: 100vh;
@@ -171,7 +168,7 @@ const Container = styled.div`
 
 const ModalContents = styled.div`
   height: 100%;
-  margin: 64px auto 0px; //20px;
+  margin: 64px auto 0px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

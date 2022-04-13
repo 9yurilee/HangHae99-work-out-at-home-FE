@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import styled from "styled-components";
-import Close from "./Images/Close.svg";
+import Close from './Images/Close.svg';
+import Trophy from './Images/Trophy.json';
 
-import Lottie from "react-lottie";
-import Trophy from "./Images/Trophy.json";
+import Lottie from 'react-lottie';
 
 const CompleteModal = (props) => {
-  // console.log("끝모달");
-
   const [isOpen, setIsOpen] = React.useState(true);
   const [count, setCount] = React.useState(5);
+
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -19,13 +18,14 @@ const CompleteModal = (props) => {
     animationData: Trophy,
     loop: true,
     autoplay: true,
-    background: "transparent",
+    background: 'transparent',
     speed: 0.5,
     rendererSettings: {
-      className: "animation", // svg에 적용
-      preserveAspectRatio: "xMidYMid slice",
+      className: 'animation', // svg에 적용
+      preserveAspectRatio: 'xMidYMid slice',
     },
   };
+
   React.useEffect(() => {
     const timeout = setInterval(() => {
       setCount((count) => count - 1);
@@ -34,11 +34,13 @@ const CompleteModal = (props) => {
       clearInterval(timeout);
     };
   }, []);
+
   React.useEffect(() => {
     if (count === 0) {
       props.setIsDoneModal();
     }
   }, [count]);
+
   return (
     <>
       {isOpen && (
@@ -47,20 +49,12 @@ const CompleteModal = (props) => {
             <CloseBtn onClick={closeModal}>
               <img src={Close} alt="취소" />
             </CloseBtn>
-            <Lottie
-              options={lottieOptions}
-              style={{ width: "300px", height: "300px" }}
-            ></Lottie>
-            {/* <div onClick={(e) => e.stopPropagation()}> */}
+            <Lottie options={lottieOptions} style={{ width: '300px', height: '300px' }} />
             <ModalContents>
               <div className="first">운동 끝! 오늘도 해냈어요!</div>
-              <div className="second">
-                방에 남아서 이야기를 나누거나, 메인페이지에서 운동 기록을 확인해
-                보세요
-              </div>
+              <div className="second">방에 남아서 이야기를 나누거나, 메인페이지에서 운동 기록을 확인해 보세요</div>
               <div className="third">{count}초 후에 창이 닫혀요</div>
             </ModalContents>
-            {/* </div> */}
           </ModalWrap>
         </BackGround>
       )}

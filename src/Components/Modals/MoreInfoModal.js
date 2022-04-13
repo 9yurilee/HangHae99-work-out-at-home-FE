@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Close from "./Images/Close.svg";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+
+import Close from './Images/Close.svg';
 
 const MyInfoModal = (props) => {
   const [MyModal, setMyModal] = useState(false);
@@ -10,7 +11,7 @@ const MyInfoModal = (props) => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: 'relative' }}>
       <DIV>
         <CloseBtn>
           <img src={Close} alt="closeBtn" onClick={onClickClose} />
@@ -21,16 +22,16 @@ const MyInfoModal = (props) => {
           <TextWrap>고객 지원</TextWrap>
           <DESC>
             <div
-              style={{ marginBottom: "12px" }}
+              style={{ marginBottom: '12px' }}
               onClick={() => {
-                window.open("https://forms.gle/Shna39cfEnXqkLfu6", "_blank");
+                window.open('https://forms.gle/Shna39cfEnXqkLfu6', '_blank');
               }}
             >
               ✍️ 홈트게더 이용 후기 남기기
             </div>
             <div
               onClick={() => {
-                window.open("https://forms.gle/ympKY1rVpspLX1Ut8", "_blank");
+                window.open('https://forms.gle/ympKY1rVpspLX1Ut8', '_blank');
               }}
             >
               😱 오류, 버그 신고하기
@@ -58,7 +59,7 @@ const DIV = styled.div`
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid #fff;
-    content: "";
+    content: '';
     position: absolute;
     top: -0.6rem;
     right: 1.4rem;
@@ -100,13 +101,6 @@ const DESC = styled.div`
   a:visited {
     color: rgb(34, 37, 41);
   }
-`;
-
-const Login = styled.div`
-  position: absolute;
-  bottom: 33px;
-  display: flex;
-  left: 75px;
 `;
 
 const CloseBtn = styled.div`
