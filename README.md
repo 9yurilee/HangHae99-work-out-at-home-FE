@@ -22,7 +22,8 @@
 
 
 ## 📌 바로가기
-- 사이트 바로가기 : https://htgather.com
+- 사이트 바로가기 : ~~https://htgather.com~~
+  <b>(+) 23.01.18 홈트게더 운영을 종료합니다. 지금까지 이용해주셔서 감사합니다!</b>
 - 프론트엔드 GitHub Repository : https://github.com/htgather/Team-htgather-frontend
 - 백엔드 GitHub Respository : https://github.com/htgather/Team-htgather-backend
 - 시연 영상 보러가기: https://www.youtube.com/watch?v=MHotySs09E4&t=1s
